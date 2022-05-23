@@ -16,8 +16,12 @@
                     *ngIf="form.controls?.['sku']?.errors?.['minlength']">
                     El código SKU debe tener 4 caracteres
                 </span>
+                <span class="valid"
+                      *ngIf="form.controls?.['sku']?.valid">
+                    &#10004;
+                </span>
             </label>
-            <input type="text" formControlName="sku">
+            <input type="text" formControlName="sku" maxlength="4">
         </div>
         <div class="row column">
             <label>Marca</label>
