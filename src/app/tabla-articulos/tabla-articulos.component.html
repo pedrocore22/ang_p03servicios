@@ -1,1 +1,14 @@
-<p>tabla-articulos works!</p>
+<div class="container">
+    <table>
+        <tr>
+            <th>SKU</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+        </tr>
+        <tr *ngFor="let articulo of articulos">
+            <td>{{articulo.sku}}</td>
+            <td>{{articulo.marca}}</td>
+            <td>{{articulo.modelo}}</td>
+        </tr>
+    </table>
+</div>

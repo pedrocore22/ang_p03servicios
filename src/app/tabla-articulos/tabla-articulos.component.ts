@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ArticulosService } from '../articulos.service';
 
 @Component({
   selector: 'app-tabla-articulos',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TablaArticulosComponent implements OnInit {
 
-  constructor() { }
+  articulos: Array<any> = [];
+
+  constructor(private articulosService: ArticulosService) { }
 
   ngOnInit(): void {
+    this.articulos = this.articulosService.getArticulos();
+    console.log(this.articulos);
   }
 
 }
