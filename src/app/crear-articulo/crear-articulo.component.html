@@ -21,18 +21,48 @@
                     &#10004;
                 </span>
             </label>
-            <input type="text" formControlName="sku" maxlength="4">
+            <input type="text" formControlName="sku" maxlength="4" #sku>
         </div>
         <div class="row column">
-            <label>Marca</label>
+            <label>
+                Marca
+                <span class="alert"
+                    *ngIf="form.controls?.['marca']?.errors?.['required']">
+                    *
+                </span>
+                <span class="alert"
+                    *ngIf="form.controls?.['marca']?.errors?.['required'] &&
+                           form.controls?.['marca']?.dirty">
+                    El campo marca es obligatorio
+                </span>
+                <span class="valid"
+                      *ngIf="form.controls?.['marca']?.valid">
+                    &#10004;
+                </span>
+            </label>
             <input type="text" formControlName="marca">
         </div>
         <div class="row column">
-            <label>Modelo</label>
+            <label>
+                Modelo
+                <span class="alert"
+                    *ngIf="form.controls?.['modelo']?.errors?.['required']">
+                    *
+                </span>
+                <span class="alert"
+                    *ngIf="form.controls?.['modelo']?.errors?.['required'] &&
+                           form.controls?.['modelo']?.dirty">
+                    El campo modelo es obligatorio
+                </span>
+                <span class="valid"
+                      *ngIf="form.controls?.['modelo']?.valid">
+                    &#10004;
+                </span>
+            </label>
             <input type="text" formControlName="modelo">
         </div>
         <div class="buttons-row">
-            <button type="submit">Añadir</button>
+            <button type="submit" [disabled]="form.invalid" >Añadir</button>
         </div>
     </form>
 </div>

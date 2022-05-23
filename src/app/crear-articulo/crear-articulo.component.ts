@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ArticulosService } from '../articulos.service';
 
@@ -10,6 +10,7 @@ import { ArticulosService } from '../articulos.service';
 export class CrearArticuloComponent implements OnInit {
 
   form: FormGroup = new FormGroup({});
+  @ViewChild('sku') skuInputRef: ElementRef = new ElementRef({});
 
   constructor(private articulosService: ArticulosService) { }
 
@@ -21,10 +22,15 @@ export class CrearArticuloComponent implements OnInit {
     })
   }
 
+  ngAfterViewInit() {
+    this.skuInputRef.nativeElement.focus();
+  }
+
   addArticulo() {
     // Invocar cuando se dispare el evento submit
     this.articulosService.addArticulo(this.form.value);
     this.form.reset();
+    this.skuInputRef.nativeElement.focus();
   }
 
 }
